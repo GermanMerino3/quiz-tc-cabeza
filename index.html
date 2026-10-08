@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador TAC Cabeza · Casos Clínicos + Protocolo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Simulador TAC de Cabeza</h1>
+    <p class="sub">Quiz ciego · Patología + Protocolo</p>
+  </div>
+  <div class="progress-wrap">
+    <div id="counter">Caso 1 / 33</div>
+    <div class="progress"><div id="bar"></div></div>
+    <div class="score">Puntaje: <span id="score">0</span> · Revisados: <span id="done">0</span></div>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="viewer card">
+    <div class="case-head">
+      <h2 id="caseTitle">Caso 1</h2>
+      <span id="caseId" class="badge">—</span>
+      <button id="btnAyuda" type="button" class="btn-ayuda" title="Muestra el nombre de la patología">AYUDA</button>
+    </div>
+    <div id="ayudaBox" class="ayuda-box" hidden></div>
+    <div class="img-wrap" id="imgWrap" title="Rueda del mouse = cambiar corte · clic = zoom">
+      <img id="caseImg" alt="Corte axial TAC" src="">
+      <div id="imgErr" class="img-err" hidden>Si no carga: revisa tu internet / desactiva bloqueador. <button id="btnRetry" type="button">Reintentar</button></div>
+    </div>
+    <div class="slice-bar">
+      <button id="slicePrev" type="button">‹ corte</button>
+      <input id="sliceRange" type="range" min="0" max="0" value="0" step="1">
+      <span id="sliceLabel">1 / 1</span>
+      <button id="sliceNext" type="button">corte ›</button>
+    </div>
+    <p class="credit">Imagen: <span id="credit">—</span></p>
+    <div class="nav">
+      <button id="btnPrev">← Anterior</button>
+      <button id="btnRandom" class="ghost">Caso aleatorio</button>
+      <button id="btnNext">Siguiente caso →</button>
+    </div>
+    <div class="clinica">
+      <h3>Antecedentes del paciente</h3>
+      <p id="clinicaTxt">—</p>
+    </div>
+    <div id="studyBox" class="study" hidden>Fuente completa + estudio: <a id="radioLink" href="#" target="_blank" rel="noopener">abrir referencia</a></div>
+  </section>
+
+  <section class="quiz">
+    <div class="card">
+      <label class="q">¿Qué patología es esta?
+        <input id="inPatologia" type="text" placeholder="Tu respuesta" autocomplete="off">
+      </label>
+      <div class="fb" id="fb-patologia"></div>
+    </div>
+
+    <div class="card">
+      <label class="q">¿Qué protocolo usaría?
+        <select id="selProtocolo">
+          <option value="">Seleccionar…</option>
+          <option value="cerebro-con">Cerebro con contraste</option>
+          <option value="cerebro-sin">Cerebro Sin Contraste</option>
+          <option value="cerebro-oseo">Cerebro óseo</option>
+          <option value="angio">ANGIO TAC CEREBRO</option>
+          <option value="silla">Silla turca</option>
+          <option value="senos">Senos paranasales</option>
+          <option value="facial">Facial y órbitas</option>
+          <option value="oido">Oído</option>
+        </select>
+      </label>
+      <div class="fb" id="fb-protocolo"></div>
+    </div>
+
+    <div class="tables">
+      <div class="card">
+        <h3>Técnica</h3>
+        <div class="field"><label>Espesor</label><input id="f-espesor" placeholder="Tu respuesta"><div class="fb" id="fb-espesor"></div></div>
+        <div class="field"><label>Filtro</label><input id="f-filtro" placeholder="Tu respuesta"><div class="fb" id="fb-filtro"></div></div>
+        <div class="field"><label>Tiempo de rot.</label><input id="f-tiempoRot" placeholder="Tu respuesta"><div class="fb" id="fb-tiempoRot"></div></div>
+        <div class="field"><label>Colimación</label><input id="f-colimacion" placeholder="Tu respuesta"><div class="fb" id="fb-colimacion"></div></div>
+        <div class="field"><label>Scan</label><input id="f-scan" placeholder="Tu respuesta"><div class="fb" id="fb-scan"></div></div>
+        <div class="field"><label>FOV</label><input id="f-fov" placeholder="Tu respuesta"><div class="fb" id="fb-fov"></div></div>
+        <div class="field"><label>Ventana</label><input id="f-ventana" placeholder="Tu respuesta"><div class="fb" id="fb-ventana"></div></div>
+        <div class="field"><label>Matriz</label><input id="f-matriz" placeholder="Tu respuesta"><div class="fb" id="fb-matriz"></div></div>
+        <div class="field"><label>KV</label><input id="f-kv" placeholder="Tu respuesta"><div class="fb" id="fb-kv"></div></div>
+        <div class="field"><label>mAs</label><input id="f-mas" placeholder="Tu respuesta"><div class="fb" id="fb-mas"></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Posicionamiento</h3>
+        <div class="field"><label>Centraje</label><input id="f-centraje" placeholder="Tu respuesta"><div class="fb" id="fb-centraje"></div></div>
+        <div class="field"><label>Escanograma</label><input id="f-escanograma" placeholder="Tu respuesta"><div class="fb" id="fb-escanograma"></div></div>
+        <div class="field"><label>Posición paciente</label><input id="f-posicion" placeholder="Tu respuesta"><div class="fb" id="fb-posicion"></div></div>
+        <div class="field"><label>Límites estudio</label><input id="f-limites" placeholder="Tu respuesta"><div class="fb" id="fb-limites"></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Contraste</h3>
+        <div class="field"><label>¿Usará contraste? Sí o No</label>
+          <select id="f-contraste"><option value="">Seleccionar…</option><option>Sí</option><option>No</option></select>
+          <div class="fb" id="fb-contraste"></div>
+        </div>
+        <div class="field"><label>Velocidad (cc/s)</label><input id="f-velocidad" placeholder="Tu respuesta"><div class="fb" id="fb-velocidad"></div></div>
+        <div class="field"><label>Volumen (cc)</label><input id="f-volumen" placeholder="Tu respuesta"><div class="fb" id="fb-volumen"></div></div>
+        <div class="field"><label>Delay (s)</label><input id="f-delay" placeholder="Tu respuesta"><div class="fb" id="fb-delay"></div></div>
+        <div class="field"><label>¿Qué vía usar?</label><input id="f-via" placeholder="Tu respuesta"><div class="fb" id="fb-via"></div></div>
+      </div>
+    </div>
+
+    <button id="btnCheck" class="check">Estás listo? Aprieta aquí para comprobar tus respuestas</button>
+    <div id="summary" class="summary"></div>
+  </section>
+</main>
+
+<footer><p>Uso educativo · Sin pistas en pantalla · La referencia completa aparece solo al comprobar.</p></footer>
+<script src="casesData.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

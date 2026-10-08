@@ -1,0 +1,42 @@
+:root{--bg:#0b1220;--card:#141e32;--line:#24314f;--txt:#e8eefc;--mut:#9fb0d0;--ok:#22c55e;--bad:#ef4444;--acc:#38bdf8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Segoe UI,system-ui,Arial,sans-serif}
+.topbar{display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#0b1220f2;z-index:5}
+.topbar h1{margin:0;font-size:22px}.sub{margin:4px 0 0;color:var(--mut);font-size:13px}
+.progress-wrap{min-width:220px;text-align:right;font-size:13px}.progress{height:8px;background:#1f2b47;border-radius:99px;margin:8px 0;overflow:hidden}#bar{height:100%;width:0;background:var(--acc)}.score{color:var(--mut)}
+.layout{display:grid;grid-template-columns:420px 1fr;gap:16px;padding:16px;max-width:1400px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.case-head{display:flex;align-items:center;gap:10px}.badge{background:#1f2b47;border:1px solid var(--line);padding:2px 10px;border-radius:99px;font-size:12px}
+.pista{color:var(--mut);font-size:13px;background:#0f1830;border:1px dashed var(--line);padding:8px;border-radius:8px}
+.img-wrap{background:#000;border-radius:10px;display:flex;justify-content:center;min-height:320px;align-items:center;overflow:hidden;cursor:zoom-in}
+.img-wrap img{max-width:100%;max-height:520px;object-fit:contain;filter:contrast(1.05)}
+.img-wrap.zoom img{max-height:none;transform:scale(1.6);cursor:zoom-out}
+.credit{font-size:11px;color:var(--mut)}.credit a{color:var(--acc)}
+.slice-bar{display:flex;align-items:center;gap:10px;margin:10px 0}
+.slice-bar input[type=range]{flex:1;accent-color:var(--acc)}
+.slice-bar button{background:#1f2b47;color:var(--txt);padding:8px 12px}
+#sliceLabel{font-size:12px;color:var(--mut);min-width:48px;text-align:center}
+.img-err{position:absolute;background:#450a0af2;padding:12px;border-radius:8px;font-size:13px}
+.img-wrap{position:relative}
+.study{font-size:12px;color:var(--mut);background:#0c1428;border:1px solid var(--line);padding:8px;border-radius:8px;margin-bottom:8px}
+.study a{color:var(--acc)}
+.btn-ayuda{background:#16a34a;color:#fff;font-weight:800;padding:6px 22px;border-radius:6px;letter-spacing:1px}
+.btn-ayuda:disabled{opacity:.5;cursor:default}
+.ayuda-box{background:#052e16;border:1px solid var(--ok);color:#bbf7d0;padding:10px;border-radius:8px;margin:10px 0;font-weight:700}
+.clinica{background:#fff7ed;border:2px solid #f97316;border-radius:10px;padding:12px;margin-top:12px;color:#431407}
+.clinica h3{margin:0 0 6px;font-size:15px;color:#c2410c}
+.clinica p{margin:0;font-size:13px;line-height:1.5}
+.nav{display:flex;gap:8px}button{background:var(--acc);border:0;color:#04222f;font-weight:700;padding:10px 14px;border-radius:10px;cursor:pointer}
+button.ghost{background:#1f2b47;color:var(--txt)}
+.q{display:block;font-weight:700}input,select{width:100%;margin-top:8px;background:#0c1428;border:1px solid var(--line);color:var(--txt);padding:10px;border-radius:8px;font-size:14px}
+.tables{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}.tables h3{margin:0 0 10px;font-size:15px}
+.field{margin-bottom:12px}.field label{font-size:12px;color:var(--mut);font-weight:700}
+.check{width:100%;font-size:16px;padding:14px;border:2px solid #7f1d1d;background:#450a0a;color:#fecaca;margin:6px 0 12px}
+.check:hover{background:#7f1d1d;color:#fff}
+.fb{font-size:12px;margin-top:4px;min-height:16px}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+input.ok,select.ok{border-color:var(--ok);box-shadow:0 0 0 1px var(--ok)}
+input.bad,select.bad{border-color:var(--bad);box-shadow:0 0 0 1px var(--bad)}
+.summary{padding:12px;border-radius:10px;background:#0f1830;border:1px solid var(--line)}
+.tip{font-size:11px;color:var(--mut);background:#0c1428;padding:8px;border-radius:8px}
+.ref summary{cursor:pointer;color:var(--acc)}.ref-grid{display:grid;grid-template-columns:1fr 1fr;font-size:11px;gap:8px;margin-top:8px;color:var(--mut)}
+footer{padding:16px;color:var(--mut);font-size:12px;text-align:center}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.tables{grid-template-columns:1fr}}
